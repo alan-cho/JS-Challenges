@@ -42,12 +42,12 @@ class Triangle {
   }
 
   static verifyTriangleInequality(sides) {
-    const expressionOne = sides[0] + sides[1] < sides[2];
-    const expressionTwo = sides[0] + sides[2] < sides[1];
-    const expressionThree = sides[1] + sides[2] < sides[0];
+    const expressionOne = sides[0] + sides[1] > sides[2];
+    const expressionTwo = sides[0] + sides[2] > sides[1];
+    const expressionThree = sides[1] + sides[2] > sides[0];
 
     if (!(expressionOne && expressionTwo && expressionThree)) {
-      throw new Error("Fails the Triangle Inequality Theorem");
+      throw new Error("Fails the Triangle Inequality Theorem.");
     }
   }
 
@@ -57,8 +57,31 @@ class Triangle {
     }
   }
 
+  static equilateral(sides) {
+    return sides[0] === sides[1] && sides[0] === sides[2];
+  }
+
+  static isosceles(sides) {
+    let expressionOne = sides[0] === sides[1] && sides[2] !== sides[0];
+    let expressionTwo = sides[1] === sides[2] && sides[0] !== sides[1];
+    let expressionThree = sides[0] === sides[2] && sides[1] !== sides[0];
+    return expressionOne || expressionTwo || expressionThree;
+  }
+
+  static scalene(sides) {
+    return (
+      sides[0] !== sides[1] && sides[0] !== sides[2] && sides[1] !== sides[2]
+    );
+  }
+
   kind() {
-    // Returns the type of triangle it is.
+    if (Triangle.equilateral(this.sides)) {
+      return "equilateral";
+    } else if (Triangle.isosceles(this.sides)) {
+      return "isosceles";
+    } else if (Triangle.scalene(this.sides)) {
+      return "scalene";
+    }
   }
 }
 
