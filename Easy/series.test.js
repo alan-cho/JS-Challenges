@@ -6,12 +6,12 @@ describe("Series", () => {
     expect(series.slices(1)).toEqual([[0], [1], [2], [3], [4]]);
   });
 
-  xtest("test simple slices of one again", () => {
+  test("test simple slices of one again", () => {
     let series = new Series("92834");
     expect(series.slices(1)).toEqual([[9], [2], [8], [3], [4]]);
   });
 
-  xtest("test simple slices of two", () => {
+  test("test simple slices of two", () => {
     let series = new Series("01234");
     expect(series.slices(2)).toEqual([
       [0, 1],
@@ -21,7 +21,7 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test other slices of two", () => {
+  test("test other slices of two", () => {
     let series = new Series("98273463");
     let expected = [
       [9, 8],
@@ -35,7 +35,7 @@ describe("Series", () => {
     expect(series.slices(2)).toEqual(expected);
   });
 
-  xtest("test simple slices of two again", () => {
+  test("test simple slices of two again", () => {
     let series = new Series("37103");
     expect(series.slices(2)).toEqual([
       [3, 7],
@@ -45,7 +45,7 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test simple slices of three", () => {
+  test("test simple slices of three", () => {
     let series = new Series("01234");
     expect(series.slices(3)).toEqual([
       [0, 1, 2],
@@ -54,7 +54,7 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test simple slices of three again", () => {
+  test("test simple slices of three again", () => {
     let series = new Series("31001");
     expect(series.slices(3)).toEqual([
       [3, 1, 0],
@@ -63,7 +63,7 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test other slices of three", () => {
+  test("test other slices of three", () => {
     let series = new Series("982347");
     let expected = [
       [9, 8, 2],
@@ -74,7 +74,7 @@ describe("Series", () => {
     expect(series.slices(3)).toEqual(expected);
   });
 
-  xtest("test simple slices of four", () => {
+  test("test simple slices of four", () => {
     let series = new Series("01234");
     expect(series.slices(4)).toEqual([
       [0, 1, 2, 3],
@@ -82,7 +82,7 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test simple slices of four again", () => {
+  test("test simple slices of four again", () => {
     let series = new Series("91274");
     expect(series.slices(4)).toEqual([
       [9, 1, 2, 7],
@@ -90,24 +90,24 @@ describe("Series", () => {
     ]);
   });
 
-  xtest("test simple slices of five", () => {
+  test("test simple slices of five", () => {
     let series = new Series("01234");
     expect(series.slices(5)).toEqual([[0, 1, 2, 3, 4]]);
   });
 
-  xtest("test simple slices of five again", () => {
+  test("test simple slices of five again", () => {
     let series = new Series("81228");
     expect(series.slices(5)).toEqual([[8, 1, 2, 2, 8]]);
   });
 
-  xtest("test simple slice that blows up", () => {
+  test("test simple slice that blows up", () => {
     let series = new Series("01234");
     expect(() => {
       series.slices(6);
     }).toThrow();
   });
 
-  xtest("test more complicated slice that blows up", () => {
+  test("test more complicated slice that blows up", () => {
     let sliceString = "01032987583";
     let series = new Series(sliceString);
     expect(() => {
